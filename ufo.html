@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UFO Sightings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="text" class="form-control" id="datetime" placeholder="Date/Time">
+          <a id="searchDatetime" class="btn btn-primary">Filter by Date/Time</a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="text" class="form-control" id="city" placeholder="City">
+          <a id="searchCity" class="btn btn-primary">Filter by City</a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="text" class="form-control" id="state" placeholder="State">
+          <a id="searchState" class="btn btn-primary">Filter by State</a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="text" class="form-control" id="country" placeholder="Country">
+          <a id="searchCountry" class="btn btn-primary">Filter by Country</a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <input type="text" class="form-control" id="shape" placeholder="Shape">
+          <a id="searchShape" class="btn btn-primary">Filter by Shape</a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <a id="searchAll" class="btn btn-default">Apply all filters</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped" id="dataTable">
+          <thead>
+            <tr>
+              <th>Date/Time</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Country</th>
+              <th>Shape</th>
+              <th>Duration</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+	<script type="text/javascript">
+		d3.select("#searchDatetime").on("click", function(event) {
+			d3.event.preventprimary();
+			var input = d3.select("#datetime").node().value,
+				filter = input.toLowerCase(),
+				tbody = document.getElementById("tbody"),
+				tr = tbody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				}
+				else {
+					tr[i].style.display = "none";
+				}
+				
+			console.log(input)
+			}
+		})
+		d3.select("#searchCity").on("click", function(event) {
+			d3.event.preventprimary();
+			var input = d3.select("#city").node().value,
+				filter = input.toLowerCase(),
+				tbody = document.getElementById("tbody"),
+				tr = tbody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				}
+				else {
+					tr[i].style.display = "none";
+				}
+				
+			console.log(input)
+			}
+		})
+		d3.select("#searchState").on("click", function(event) {
+			d3.event.preventprimary();
+			var input = d3.select("#state").node().value,
+				filter = input.toLowerCase(),
+				tbody = document.getElementById("tbody"),
+				tr = tbody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[2];
+				if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				}
+				else {
+					tr[i].style.display = "none";
+				}
+				
+			console.log(input)
+			}
+		})
+		d3.select("#searchCountry").on("click", function(event) {
+			d3.event.preventprimary();
+			var input = d3.select("#country").node().value,
+				filter = input.toLowerCase(),
+				tbody = document.getElementById("tbody"),
+				tr = tbody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[3];
+				if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				}
+				else {
+					tr[i].style.display = "none";
+				}
+				
+			console.log(input)
+			}
+		})
+		d3.select("#searchShape").on("click", function(event) {
+			d3.event.preventprimary();
+			var input = d3.select("#shape").node().value,
+				filter = input.toLowerCase(),
+				tbody = document.getElementById("tbody"),
+				tr = tbody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[4];
+				if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				}
+				else {
+					tr[i].style.display = "none";
+				}
+				
+			console.log(input)
+			}
+		})
+		d3.select("#searchAll").on("click", function(event) {
+			d3.event.preventprimary();
+			var input1 = d3.select("#datetime").node().value,
+				filter1 = input1.toLowerCase(),
+				input2 = d3.select("#city").node().value,
+				filter2 = input2.toLowerCase(),
+				input3 = d3.select("#state").node().value,
+				filter3 = input3.toLowerCase(),
+				input4 = d3.select("#country").node().value,
+				filter4 = input4.toLowerCase(),
+				input5 = d3.select("#shape").node().value,
+				filter5 = input5.toLowerCase(),
+				tbody = document.getElementById("tbody"),
+				tr = tbody.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td1 = tr[i].getElementsByTagName("td")[0];
+				td2 = tr[i].getElementsByTagName("td")[1];
+				td3 = tr[i].getElementsByTagName("td")[2];
+				td4 = tr[i].getElementsByTagName("td")[3];
+				td5 = tr[i].getElementsByTagName("td")[4];
+				if (td1.innerHTML.toLowerCase().indexOf(filter1) > -1 && td2.innerHTML.toLowerCase().indexOf(filter2) > -1 && td3.innerHTML.toLowerCase().indexOf(filter3) > -1 && td4.innerHTML.toLowerCase().indexOf(filter4) > -1 && td5.innerHTML.toLowerCase().indexOf(filter5) > -1) {
+					tr[i].style.display = "";
+				}
+				else {
+					tr[i].style.display = "none";
+				}
+				
+			console.log(input1)
+			console.log(input2)
+			console.log(input3)
+			console.log(input4)
+			console.log(input5)
+			}
+		})
+
+	</script>
+
+  <script src="ufoData.js" type="text/javascript"></script>
+  <script src="ufo.js" type="text/javascript"></script>
+</body>
+
+</html>
